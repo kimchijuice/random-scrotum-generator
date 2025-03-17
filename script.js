@@ -89,22 +89,23 @@ function updateLoadingMessage() {
 
 // Image shuffle animation
 function startImageShuffle() {
-    let shuffleCount = 0;
+    // Clear any existing shuffle interval to avoid multiple intervals running
+    if (shuffleInterval) {
+        clearInterval(shuffleInterval);
+    }
+    
     shuffleInterval = setInterval(() => {
         // Show a different cat image in each shuffle frame
         const randomCatIndex = Math.floor(Math.random() * catDatabase.cats.length);
         const randomCatUrl = catDatabase.cats[randomCatIndex].url;
         
-        // Set the background image instead of just a color
+        // Set the background image
         imageShuffle.style.backgroundImage = `url(${randomCatUrl})`;
-        shuffleCount++;
-        
-        if (shuffleCount > 20) {
-            clearInterval(shuffleInterval);
-        }
     }, 150);
+    
+    // We'll clear this interval in the showResult function, so it continues
+    // shuffling throughout the entire loading process
 }
-
 // Show the result page with the random cat
 function showResult() {
     // Clear the intervals
