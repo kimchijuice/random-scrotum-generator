@@ -165,7 +165,16 @@ function restart() {
     // Reset state
     progressBar.style.width = '0%';
     
-    // Hide result page, show homepage
+    // Hide result page, show loading page directly
     resultpage.classList.add('hidden');
-    homepage.classList.remove('hidden');
+    loadingpage.classList.remove('hidden');
+    
+    // Start the loading process again
+    startLoadingAnimation();
+    startImageShuffle();
+    
+    // Simulate loading time (12 seconds)
+    setTimeout(() => {
+        showResult();
+    }, 8000);
 }
