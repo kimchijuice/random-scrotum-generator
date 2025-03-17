@@ -78,7 +78,7 @@ function startLoadingAnimation() {
     
     // Change loading messages
     updateLoadingMessage();
-    messageInterval = setInterval(updateLoadingMessage, 600);
+    messageInterval = setInterval(updateLoadingMessage, 1200);
 }
 
 // Update the loading message
